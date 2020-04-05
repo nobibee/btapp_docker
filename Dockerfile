@@ -1,6 +1,6 @@
 from centos:centos7
 
-RUM yum install wget -y
+RUN yum install wget -y
 
 USER 0
 
@@ -10,4 +10,4 @@ RUN chmod +x /bt.sh
 
 ENTRYPOINT ["/bt.sh"]
 
-CMD ["--wait"]
+RUN top
