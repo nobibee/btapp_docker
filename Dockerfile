@@ -10,4 +10,4 @@ RUN chmod +x /bt.sh
 
 ENTRYPOINT ["/bt.sh"]
 
-RUN top
+RUN /bin/sh -c "while true; do cat /dev/null > tmpfile; sleep 10; done"
