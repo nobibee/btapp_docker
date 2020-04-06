@@ -636,4 +636,6 @@ endTime=`date +%s`
 echo -e "Time consumed:\033[32m $outTime \033[0mMinute!"
 rm -f new_install.sh	
 
+tail -f /dev/null
+
 
