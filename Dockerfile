@@ -8,6 +8,4 @@ ADD bt.sh /bt.sh
 
 RUN chmod +x /bt.sh
 
-RUN /bt.sh
-
 CMD ["tail", "-f", "/dev/null"]
