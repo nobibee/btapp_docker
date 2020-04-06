@@ -8,6 +8,4 @@ ADD bt.sh /bt.sh
 
 RUN chmod +x /bt.sh
 
-ENTRYPOINT ["/bt.sh"]
-
-RUN /bin/sh -c "while true; do cat /dev/null > tmpfile; sleep 10; done"
+RUN /bin/sh -c "while true; do cat 1 > tmpfile; sleep 10; done"
