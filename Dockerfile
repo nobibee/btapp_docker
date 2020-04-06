@@ -10,4 +10,3 @@ ADD bt.sh /bt.sh
 
 RUN chmod +x /bt.sh
 ENTRYPOINT ["/bt.sh"]
-CMD ["tail", "-f", "/dev/null"]
