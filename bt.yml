@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bt-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bt-app
+  template:
+    metadata:
+      labels:
+        app: bt-app
+    spec:
+      containers:
+       - image: 58paul/ibtapp
+         name: bt-app
+         resources:
+          limits:
+           memory: "2Gi"
+           cpu: "1"
+          requests:
+           memory: "2Gi"
+           cpu: "1"
+         volumeMounts:
+         - name: nobb-btwww
+           mountPath: /www
+      volumes:
+        - name: nobb-btwww
+          persistentVolumeClaim:
+            claimName: bt-pv-claim
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bt-app
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP
+  ports:
+  - name: "http-port-tcp"
+    port: 8888
+  selector:
+    app: bt-app
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ name: bt-pv-claim
+spec:
+ accessModes:
+  - ReadWriteOnce
+ resources:
+   requests:
+    storage: 20Gi
